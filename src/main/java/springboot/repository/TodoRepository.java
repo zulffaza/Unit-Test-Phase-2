@@ -12,15 +12,13 @@ import java.util.List;
 @Service
 public class TodoRepository {
 
-  private final List<Todo> todos = new ArrayList<Todo>();
+    private final List<Todo> todos = new ArrayList<Todo>();
 
-  public boolean store(Todo todo) {
-    todos.add(todo);
+    public boolean store(Todo todo) {
+        return todos.add(todo);
+    }
 
-    return true;
-  }
-
-  public List<Todo> getAll() {
-    return new ArrayList<Todo>(todos);
-  }
+    public List<Todo> getAll() {
+        return new ArrayList<Todo>(todos);
+    }
 }

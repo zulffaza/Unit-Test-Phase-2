@@ -20,26 +20,24 @@ import java.util.List;
 @RequestMapping("/todos")
 public class HomeController {
 
-  @Autowired
-  private TodoService todoService;
+    @Autowired
+    private TodoService todoService;
 
-  @GetMapping
-  public ResponseWrapper<List<Todo>> all() {
-    ResponseWrapper<List<Todo>> resp = new ResponseWrapper<List<Todo>>();
-    resp.setValue(todoService.getAll());
+    @GetMapping
+    public ResponseWrapper<List<Todo>> all() {
+        ResponseWrapper<List<Todo>> resp = new ResponseWrapper<List<Todo>>();
+        resp.setValue(todoService.getAll());
 
-    return resp;
-  }
+        return resp;
+    }
 
-  @PostMapping
-  public ResponseWrapper<Boolean> insert(@RequestBody CreateTodoRequest request) {
-    boolean success = todoService.saveTodo(request.getName(), request.getPriority());
+    @PostMapping
+    public ResponseWrapper<Boolean> insert(@RequestBody CreateTodoRequest request) {
+        boolean success = todoService.saveTodo(request.getName(), request.getPriority());
 
-    ResponseWrapper<Boolean> resp = new ResponseWrapper<Boolean>();
-    resp.setValue(success);
+        ResponseWrapper<Boolean> resp = new ResponseWrapper<Boolean>();
+        resp.setValue(success);
 
-    return resp;
-  }
-
-
+        return resp;
+    }
 }

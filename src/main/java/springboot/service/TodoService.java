@@ -6,6 +6,7 @@ import springboot.model.Todo;
 import springboot.model.constants.TodoPriority;
 import springboot.repository.TodoRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -14,17 +15,23 @@ import java.util.List;
 @Service
 public class TodoService {
 
-  @Autowired
-  private TodoRepository todoRepository;
+    private TodoRepository todoRepository;
 
-  public boolean saveTodo(String name, TodoPriority priority) {
-    Todo todo = new Todo(name, priority);
+    public TodoService() {
+        // Default constructor
+    }
 
-    return todoRepository.store(todo);
-  }
+    public TodoService(TodoRepository todoRepository) {
+        this.todoRepository = todoRepository;
+    }
 
-  public List<Todo> getAll() {
-    return todoRepository.getAll();
-  }
+    public boolean saveTodo(String name, TodoPriority priority) {
+        Todo todo = new Todo(name, priority);
+        return todoRepository.store(todo);
+    }
+
+    public List<Todo> getAll() {
+        return todoRepository.getAll();
+    }
 
 }
